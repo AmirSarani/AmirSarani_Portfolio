@@ -2,21 +2,6 @@
 import { motion } from "framer-motion";
 
 const LetsBuild = () => {
-  const headerItem = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-  };
-
   const iconVariant = {
     hidden: {
       opacity: 0,
@@ -28,22 +13,28 @@ const LetsBuild = () => {
       rotate: 0,
       scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.3,
         ease: "easeOut",
       },
     },
   };
   return (
-    <div className="text-center pb-16 bg-gray-900/20 rounded-2xl">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.3 }}
+      className="text-center pb-16 bg-gray-900/20 rounded-2xl"
+    >
       {/* Header */}
       <div className="mb-12">
-        <motion.div
-          variants={headerItem}
-          className="flex items-center justify-center gap-4 mb-4"
-        >
+        <div className="flex items-center justify-center gap-4 mb-4">
           {/* Icon */}
           <motion.div
             variants={iconVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
             style={{ transform: "none" }}
             className="p-3 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl border border-blue-500/30"
           >
@@ -63,17 +54,23 @@ const LetsBuild = () => {
           <h2 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent">
             Let's Build Something Amazing
           </h2>
-        </motion.div>
+        </div>
 
         {/* Divider */}
         <div className="h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent max-w-md mx-auto w-full"></div>
       </div>
 
       {/* Description */}
-      <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+      <motion.p
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.4 }}
+        className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
+      >
         Ready to bring your ideas to life? I'm always excited to collaborate on
         innovative projects and help transform your vision into reality.
-      </p>
+      </motion.p>
 
       {/* Contact Buttons */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto w-full">
@@ -128,7 +125,7 @@ const LetsBuild = () => {
           </a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
