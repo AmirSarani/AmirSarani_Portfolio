@@ -1,12 +1,105 @@
+"use client";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
+const AchievementsCard = [
+  {
+    href: "/images/certifications/cert1.webp",
+    title: "Full Stack + DevOps",
+    img: "/cert1.jpg",
+  },
+  {
+    href: "https://www.hackerrank.com/certificates/bd2d5b312338",
+    title: "JavaScript (HackerRank)",
+    img: "/cert2.jpg",
+  },
+  {
+    href: "https://www.hackerrank.com/certificates/b3100e423bf5",
+    title: "React (HackerRank)",
+    img: "/cert3.jpg",
+  },
+  {
+    href: "https://www.udemy.com/certificate/UC-d2bcd2a3-c3de-42d5-8a71-826432170ce1/",
+    title: "JavaScript (Udemy)",
+    img: "/cert4.jpg",
+  },
+];
+
 const Achievements = () => {
+  const headerContainer = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const headerItem = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const iconVariant = {
+    hidden: {
+      opacity: 0,
+      rotate: -90,
+      scale: 0.5,
+    },
+    visible: {
+      opacity: 1,
+      rotate: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const lineVariant = {
+    hidden: {
+      scaleX: 0,
+    },
+    visible: {
+      scaleX: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeInOut",
+      },
+    },
+  };
+
   return (
     <div className="mb-16">
       {/* Header */}
-      <div className="mb-12">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="p-3 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl border border-blue-500/30">
+      <motion.div
+        variants={headerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.4 }}
+        style={{ opacity: 1, transform: "none" }}
+        className="mb-12"
+      >
+        <motion.div
+          variants={headerItem}
+          className="flex items-center gap-4 mb-4"
+        >
+          <motion.div
+            variants={iconVariant}
+            style={{ transform: "none" }}
+            className="p-3 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl border border-blue-500/30"
+          >
             <svg
               viewBox="0 0 512 512"
               className="w-6 h-6 text-blue-400"
@@ -14,41 +107,36 @@ const Achievements = () => {
             >
               <path d="M458.622 255.92l45.985-45.005c13.708-12.977 7.316-36.039-10.664-40.339l-62.65-15.99 17.661-62.015c4.991-17.838-11.829-34.663-29.661-29.671l-61.994 17.667-15.984-62.671C337.085.197 313.765-6.276 300.99 7.228L256 53.57 211.011 7.229c-12.63-13.351-36.047-7.234-40.325 10.668l-15.984 62.671-61.995-17.667C74.87 57.907 58.056 74.738 63.046 92.572l17.661 62.015-62.65 15.99C.069 174.878-6.31 197.944 7.392 210.915l45.985 45.005-45.985 45.004c-13.708 12.977-7.316 36.039 10.664 40.339l62.65 15.99-17.661 62.015c-4.991 17.838 11.829 34.663 29.661 29.671l61.994-17.667 15.984 62.671c4.439 18.575 27.696 24.018 40.325 10.668L256 458.61l44.989 46.001c12.5 13.488 35.987 7.486 40.325-10.668l15.984-62.671 61.994 17.667c17.836 4.994 34.651-11.837 29.661-29.671l-17.661-62.015 62.65-15.99c17.987-4.302 24.366-27.367 10.664-40.339l-45.984-45.004z" />
             </svg>
-          </div>
+          </motion.div>
 
-          <h2 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent">
+          <motion.h2
+            variants={headerItem}
+            className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent"
+          >
             Achievements & Badges
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
 
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
-      </div>
+        <motion.div
+          variants={lineVariant}
+          className="h-px w-full bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"
+        />
+      </motion.div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
-        {[
-          {
-            href: "/images/certifications/cert1.webp",
-            title: "Full Stack + DevOps",
-            img: "/cert1.jpg",
-          },
-          {
-            href: "https://www.hackerrank.com/certificates/bd2d5b312338",
-            title: "JavaScript (HackerRank)",
-            img: "/cert2.jpg",
-          },
-          {
-            href: "https://www.hackerrank.com/certificates/b3100e423bf5",
-            title: "React (HackerRank)",
-            img: "/cert3.jpg",
-          },
-          {
-            href: "https://www.udemy.com/certificate/UC-d2bcd2a3-c3de-42d5-8a71-826432170ce1/",
-            title: "JavaScript (Udemy)",
-            img: "/cert4.jpg",
-          },
-        ].map((item, index) => (
-          <a
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl"
+      >
+        {AchievementsCard.map((item, index) => (
+          <motion.a
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.2 }}
             key={index}
             href={item.href}
             target="_blank"
@@ -64,9 +152,9 @@ const Achievements = () => {
               fill
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
-          </a>
+          </motion.a>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -1,3 +1,6 @@
+"use client";
+import { motion } from "framer-motion";
+
 import Image from "next/image";
 
 import {
@@ -66,12 +69,80 @@ const projects = [
 ];
 
 const Projects = () => {
+  const headerContainer = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const headerItem = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const iconVariant = {
+    hidden: {
+      opacity: 0,
+      rotate: -90,
+      scale: 0.5,
+    },
+    visible: {
+      opacity: 1,
+      rotate: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const lineVariant = {
+    hidden: {
+      scaleX: 0,
+    },
+    visible: {
+      scaleX: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeInOut",
+      },
+    },
+  };
+
   return (
     <section className="mb-16">
       {/* Title */}
-      <div className="mb-12">
-        <div className="flex items-center gap-4 mb-4">
-          <div className="p-3 rounded-xl border border-blue-500/30 bg-gradient-to-br from-blue-500/20 to-cyan-500/20">
+      <motion.div
+        variants={headerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.4 }}
+        style={{ opacity: 1, transform: "none" }}
+        className="mb-12"
+      >
+        <motion.div
+          variants={headerItem}
+          className="flex items-center gap-4 mb-4"
+        >
+          <motion.div
+            variants={iconVariant}
+            style={{ transform: "none" }}
+            className="p-3 rounded-xl border border-blue-500/30 bg-gradient-to-br from-blue-500/20 to-cyan-500/20"
+          >
             <svg
               stroke="currentColor"
               fill="none"
@@ -87,21 +158,37 @@ const Projects = () => {
               <polyline points="16 18 22 12 16 6"></polyline>
               <polyline points="8 6 2 12 8 18"></polyline>
             </svg>
-          </div>
-          <h2 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent">
+          </motion.div>
+          <motion.h2
+            variants={headerItem}
+            className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent"
+          >
             Featured Projects
-          </h2>
-        </div>
-        <div className="h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
-      </div>
+          </motion.h2>
+        </motion.div>
+        <motion.div
+          variants={lineVariant}
+          className="h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"
+        />
+      </motion.div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.2 }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+      >
         {projects.map((p, i) => {
           // const Icon = p.icon;
 
           return (
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.2 }}
               key={i}
               className="group rounded-xl overflow-hidden border border-blue-500/30 transition-all duration-500 hover:-translate-y-1"
             >
@@ -126,10 +213,17 @@ const Projects = () => {
                         const Icon = skill.icon;
 
                         return (
-                          <Icon
-                            key={t}
-                            className={`w-6 h-6 ${skill.color} transition-transform duration-300 group-hover:scale-110`}
-                          />
+                          <motion.div
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
+                            viewport={{ once: true, amount: 0.2 }}
+                          >
+                            <Icon
+                              key={t}
+                              className={`w-6 h-6 ${skill.color} transition-transform duration-300 group-hover:scale-110`}
+                            />
+                          </motion.div>
                         );
                       })}
                     </div>
@@ -192,10 +286,10 @@ hover:scale-110 hover:translate-x-1"
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </section>
   );
 };

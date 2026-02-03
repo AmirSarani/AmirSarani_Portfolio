@@ -108,13 +108,6 @@ const Journey = () => {
   };
 
   return (
-    // <FadeIn
-    //   variants={list}
-    //   initial="hidden"
-    //   animate="visible"
-
-    //   // duration={0.8}
-    // >
     <motion.div
       variants={list}
       initial="hidden"
