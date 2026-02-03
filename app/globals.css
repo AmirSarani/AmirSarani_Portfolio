@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+:root {
+  --foreground: white;
+  --font-main: var(--font-poppins);
+}
+
+body {
+  background: #000000;
+  color: var(--foreground);
+  font-family: var(--font-main), sans-serif;
+  /* font-family: "Poppins", sans-serif; */
+}
