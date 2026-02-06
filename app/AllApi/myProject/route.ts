@@ -1,7 +1,7 @@
 export const GET = async () => {
   return Response.json([
     {
-      title: "Green Card",
+      title: "Green Card (In processing)",
       image: "/GreenCardProject.png",
       desc: " Modern grocery store web application with clean UI and Zustand state management.",
       live: "https://research2.vercel.app/",
@@ -9,7 +9,7 @@ export const GET = async () => {
       tech: ["next", "tailwind"],
     },
     {
-      title: "Resume Builder.(In processing)",
+      title: "Resume Builder",
       image: "/ResumeProject.png",
       desc: "A user-focused platform that makes creating professional resumes simple and fast.",
       live: "https://freshmart-store.vercel.app",
