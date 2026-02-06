@@ -1,7 +1,13 @@
+"use client";
+
 import type { Metadata } from "next";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+
+import { Poppins, Outfit } from "next/font/google";
+import { useState } from "react";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -9,8 +15,6 @@ import Header from "@/components/Header";
 // });
 
 // const
-
-import { Poppins, Outfit } from "next/font/google";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -24,21 +28,24 @@ const outfit = Outfit({
   variable: "--font-outfit",
 });
 
-export const metadata: Metadata = {
-  title: "Amir Sarani",
-  description: "Amir Protofilio",
-};
+// export const metadata: Metadata = {
+//   title: "Amir Sarani",
+//   description: "Amir Protofilio",
+// };
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const [queryClient] = useState(() => new QueryClient());
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${outfit.variable} antialiased`}>
         <Header />
-        {children}
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
       </body>
     </html>
   );

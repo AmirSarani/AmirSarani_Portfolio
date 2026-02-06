@@ -1,4 +1,4 @@
-import Achievements from "../components/Achievements";
+// import Achievements from "../components/Achievements";
 import GitHubContributions from "../components/GitHubContributions";
 import Introduce from "../components/Introduce";
 import Journey from "../components/Journey";
@@ -13,7 +13,7 @@ const MainComponents = () => {
       <Journey />
       <Tech />
       <Projects />
-      <Achievements />
+      {/* <Achievements /> */}
       <GitHubContributions />
       <LetsBuild />
     </main>

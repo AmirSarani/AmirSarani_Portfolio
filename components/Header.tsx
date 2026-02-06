@@ -13,7 +13,9 @@ const Header = () => {
       whileInView={{ opacity: 1, y: 20 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.3 }}
-      className="w-full h-[56px]  flex justify-center items-center sticky "
+      className="w-full h-[56px]  flex justify-center items-center sticky top-[-20]  backdrop-blur-md  z-50
+      
+      "
     >
       <div className="w-[96%] h-[36px]  flex justify-between items-center">
         <Link

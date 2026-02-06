@@ -1,31 +1,24 @@
 "use client";
+import instance from "@/Api/axios";
+import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const AchievementsCard = [
-  {
-    href: "/images/certifications/cert1.webp",
-    title: "Full Stack + DevOps",
-    img: "/cert1.jpg",
-  },
-  {
-    href: "https://www.hackerrank.com/certificates/bd2d5b312338",
-    title: "JavaScript (HackerRank)",
-    img: "/cert2.jpg",
-  },
-  {
-    href: "https://www.hackerrank.com/certificates/b3100e423bf5",
-    title: "React (HackerRank)",
-    img: "/cert3.jpg",
-  },
-  {
-    href: "https://www.udemy.com/certificate/UC-d2bcd2a3-c3de-42d5-8a71-826432170ce1/",
-    title: "JavaScript (Udemy)",
-    img: "/cert4.jpg",
-  },
-];
+type TPaboute = {
+  href: string;
+  title: string;
+  img: string;
+};
 
 const Achievements = () => {
+  const { data, isLoading, error } = useQuery<TPaboute[]>({
+    queryKey: ["myAchivment"],
+    queryFn: async () => {
+      const res = await instance.get("AllApi/myAchivment");
+      return res.data;
+    },
+  });
+
   const headerContainer = {
     hidden: {},
     visible: {
@@ -131,7 +124,7 @@ const Achievements = () => {
         viewport={{ once: true, amount: 0.2 }}
         className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl"
       >
-        {AchievementsCard.map((item, index) => (
+        {data?.map((item, index) => (
           <motion.a
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

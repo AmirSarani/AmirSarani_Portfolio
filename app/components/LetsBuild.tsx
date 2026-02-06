@@ -102,9 +102,9 @@ const LetsBuild = () => {
         {/* Topmate Button */}
         <div className="w-full">
           <a
-            href="https://topmate.io/aditya_domle/1811763"
+            href="/AmirSaraniResumee.pdf"
             target="_blank"
-            rel="noopener noreferrer"
+            download="AmirHossain_Sarani_Resume.pdf"
             className="w-full flex items-center justify-center gap-2 border border-blue-700/50 text-blue-300 hover:bg-blue-900/30 transition-all duration-300 py-2 px-4 rounded-sm text-sm text-center"
           >
             <svg
@@ -121,7 +121,7 @@ const LetsBuild = () => {
                 d="M12 4.5l7.5 7.5-7.5 7.5m7.5-7.5H4.5"
               />
             </svg>
-            <span>Source code on Topmate</span>
+            <span>My Resume</span>
           </a>
         </div>
       </div>

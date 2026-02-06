@@ -1,4 +1,6 @@
 "use client";
+import instance from "@/Api/axios";
+import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 
 import Image from "next/image";
@@ -33,42 +35,26 @@ const skillsMap = {
   vercel: { icon: SiVercel, color: "text-white" },
 };
 
-const projects = [
-  {
-    title: "ResearchX",
-    image: "/project-1.jpg",
-    desc: "AI-powered research document generator that creates comprehensive research papers using advanced AI models.",
-    live: "https://research2.vercel.app/",
-    github: "https://github.com/adityadomle/ResearchX",
-    tech: ["react", "tailwind", "next"],
-  },
-  {
-    title: "Freshmart Store",
-    image: "/project-2.jpg",
-    desc: "Modern grocery store web application with clean UI and Redux state management.",
-    live: "https://freshmart-store.vercel.app",
-    github: "https://github.com/adityadomle/freshmart-store",
-    tech: ["react", "redux"],
-  },
-  {
-    title: "Nike Reimagined",
-    image: "/project-3.jpg",
-    desc: "Modern Nike website redesign with smooth animations and responsive UI.",
-    live: "https://nike-reimagined-mu.vercel.app/",
-    github: "https://github.com/adityadomle/nike-reimagined",
-    tech: ["react", "tailwind"],
-  },
-  {
-    title: "Nike Reimagined",
-    image: "/project-4.jpg",
-    desc: "Modern Nike website redesign with smooth animations and responsive UI.",
-    live: "https://nike-reimagined-mu.vercel.app/",
-    github: "https://github.com/adityadomle/nike-reimagined",
-    tech: ["react", "tailwind"],
-  },
-];
+type TPprojects = {
+  title: string;
+  image: string;
+  desc: string;
+  live: string;
+  github: string;
+  tech: string;
+};
 
 const Projects = () => {
+  const { data, isLoading, error } = useQuery<TPprojects[]>({
+    queryKey: ["myProject"],
+    queryFn: async () => {
+      const res = await instance.get("AllApi/myProject");
+      return res.data;
+    },
+  });
+
+  console.log(data, "data");
+
   const headerContainer = {
     hidden: {},
     visible: {
@@ -180,7 +166,7 @@ const Projects = () => {
         viewport={{ once: true, amount: 0.2 }}
         className="grid grid-cols-1 md:grid-cols-2 gap-8"
       >
-        {projects.map((p, i) => {
+        {data?.map((p, i) => {
           // const Icon = p.icon;
 
           return (
@@ -206,7 +192,7 @@ const Projects = () => {
                   {p.title}
                   <div className="flex gap-3 mb-3">
                     <div className="flex flex-wrap gap-3 mt-3">
-                      {p.tech.map((t) => {
+                      {p.tech?.map((t, index) => {
                         const skill = skillsMap[t];
                         if (!skill) return null;
 
@@ -214,6 +200,7 @@ const Projects = () => {
 
                         return (
                           <motion.div
+                            key={index}
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, ease: "easeOut" }}

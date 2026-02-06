@@ -7,7 +7,23 @@ import { motion } from "framer-motion";
 
 import { FaGithub, FaLinkedin, FaInstagram, FaXTwitter } from "react-icons/fa6";
 
+import { useQuery } from "@tanstack/react-query";
+import instance from "@/Api/axios";
+
+type TPaboute = {
+  title: string;
+  body: string;
+};
+
 const Introduce = () => {
+  const { data, isLoading, error } = useQuery<TPaboute[]>({
+    queryKey: ["abouteMe"],
+    queryFn: async () => {
+      const res = await instance.get("AllApi/abouteMe");
+      return res.data;
+    },
+  });
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -75,29 +91,32 @@ const Introduce = () => {
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
             <circle cx="12" cy="10" r="3"></circle>
           </svg>
-          Ngp, Maharashtra, India
+          Tehran, Iran
         </motion.div>
 
         {/* Socials */}
         <motion.div
           variants={item}
-          className="flex w-full items-center gap-4 justify-between"
+          className="flex w-full items-center gap-4 justify-start"
         >
-          <Link href="https://github.com/adityadomle" target="_blank">
+          <Link href="https://github.com/AmirSarani" target="_blank">
             <FaGithub className="w-8 h-8 text-gray-200 hover:text-gray-500 transition" />
           </Link>
 
-          <Link href="https://www.linkedin.com/in/adityadomle" target="_blank">
+          <Link
+            href="https://www.linkedin.com/in/amir-sarani-6497a5322/"
+            target="_blank"
+          >
             <FaLinkedin className="w-8 h-8 text-blue-500 hover:text-blue-700 transition" />
           </Link>
-
+          {/* 
           <Link href="https://x.com/env_aditya" target="_blank">
             <FaXTwitter className="w-8 h-8 text-gray-200 hover:text-gray-500 transition" />
           </Link>
 
           <Link href="https://www.instagram.com/adittya.tsx" target="_blank">
             <FaInstagram className="w-8 h-8 text-pink-500 hover:text-pink-700 transition" />
-          </Link>
+          </Link> */}
         </motion.div>
       </div>
 
@@ -107,15 +126,7 @@ const Introduce = () => {
         <motion.div
           variants={item}
           className="flex justify-center lg:justify-start items-center gap-4 mb-6"
-        >
-          <Link
-            href="mailto:adityadomle14@gmail.com"
-            className="flex items-center border border-blue-700/50 text-blue-300 hover:bg-blue-900/30 transition-all duration-300 py-2 px-4 rounded-sm"
-          >
-            {/* <Calendar className="w-4 h-4 mr-2" /> */}
-            Schedule a call
-          </Link>
-        </motion.div>
+        ></motion.div>
 
         {/* Name */}
         <motion.h1
@@ -125,21 +136,23 @@ const Introduce = () => {
           Amir Sarani
         </motion.h1>
 
-        {/* Role */}
-        <motion.p variants={item} className="text-xl text-gray-400 mb-5">
-          Full-Stack Developer | Next.js, React, Node.js
-        </motion.p>
+        {/* {data?.map((text, index) => {
+          console.log(text, "text");
+          return ( */}
+        <div>
+          <motion.p variants={item} className="text-xl text-gray-400 mb-5">
+            {data?.[0]?.title}
+          </motion.p>
 
-        {/* Bio */}
-        <motion.p
-          variants={item}
-          className="text-gray-300 leading-relaxed text-lg max-w-2xl"
-        >
-          Self-taught Full-Stack Developer from India, specializing in modern
-          web technologies and open-source development. Passionate about
-          building scalable applications with Next.js and contributing to the
-          developer community through open-source projects.
-        </motion.p>
+          <motion.p
+            variants={item}
+            className="text-gray-300 leading-relaxed text-lg max-w-2xl"
+          >
+            {data?.[0]?.body}
+          </motion.p>
+        </div>
+        {/* );
+        })} */}
       </div>
     </motion.div>
   );

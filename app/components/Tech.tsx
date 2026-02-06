@@ -15,9 +15,15 @@ import {
   SiVercel,
   SiBootstrap,
   SiSass,
+  SiHtml5,
+  SiCss3,
+  SiGithub,
+  SiPwa,
 } from "react-icons/si";
 
 const skills = [
+  { name: "Html", icon: SiHtml5, color: "text-orange-500" },
+  { name: "Css", icon: SiCss3, color: "text-blue-500" },
   { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
   { name: "TypeScript", icon: SiTypescript, color: "text-blue-500" },
   { name: "Bootstrap", icon: SiBootstrap, color: "text-blue-600" },
@@ -25,11 +31,9 @@ const skills = [
   { name: "Sass", icon: SiSass, color: "text-pink-600" },
   { name: "React", icon: SiReact, color: "text-blue-400" },
   { name: "Next.js", icon: SiNextdotjs, color: "text-white" },
-  { name: "Node.js", icon: SiNodedotjs, color: "text-green-500" },
-  { name: "MongoDB", icon: SiMongodb, color: "text-green-600" },
-  { name: "Docker", icon: SiDocker, color: "text-blue-500" },
+  { name: "PWA", icon: SiPwa, color: "text-black-200" },
   { name: "Git", icon: SiGit, color: "text-orange-500" },
-  { name: "Vercel", icon: SiVercel, color: "text-white" },
+  { name: "Vercel", icon: SiGithub, color: "text-white" },
 ];
 
 const Tech = () => {
