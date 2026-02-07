@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import { motion } from "framer-motion";
 
@@ -14,7 +15,7 @@ const LetsBuild = () => {
       scale: 1,
       transition: {
         duration: 0.3,
-        ease: "easeOut",
+        ease: [0.42, 0, 0.58, 1],
       },
     },
   };
@@ -31,7 +32,7 @@ const LetsBuild = () => {
         <div className="flex items-center justify-center gap-4 mb-4">
           {/* Icon */}
           <motion.div
-            variants={iconVariant}
+            variants={iconVariant as any}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
@@ -52,7 +53,7 @@ const LetsBuild = () => {
 
           {/* Title */}
           <h2 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent">
-            Let's Build Something Amazing
+            Let&apos;s Build Something Amazing
           </h2>
         </div>
 
@@ -68,8 +69,9 @@ const LetsBuild = () => {
         viewport={{ once: true, amount: 0.4 }}
         className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
       >
-        Ready to bring your ideas to life? I'm always excited to collaborate on
-        innovative projects and help transform your vision into reality.
+        Ready to bring your ideas to life? I&apos;m always excited to
+        collaborate on innovative projects and help transform your vision into
+        reality.
       </motion.p>
 
       {/* Contact Buttons */}

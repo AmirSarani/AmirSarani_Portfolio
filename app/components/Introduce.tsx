@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import prof from "@/public/porof.jpeg";
@@ -31,7 +32,7 @@ const Introduce = () => {
       transition: {
         staggerChildren: 0.1,
         delayChildren: 0.12,
-        ease: "easeOut",
+        ease: [0.42, 0, 0.58, 1],
       },
     },
   };
@@ -42,14 +43,14 @@ const Introduce = () => {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: [0.42, 0, 0.58, 1],
       },
     },
   };
 
   return (
     <motion.div
-      variants={container}
+      variants={container as any}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
@@ -59,7 +60,7 @@ const Introduce = () => {
       <div className="flex flex-col items-center lg:items-start">
         {/* Avatar */}
         <motion.div
-          variants={item}
+          variants={item as any}
           className="relative w-40 h-40 mb-6 rounded-full ring-2 ring-gray-800 overflow-hidden bg-gray-900/50"
         >
           <Image
@@ -73,7 +74,7 @@ const Introduce = () => {
 
         {/* Location */}
         <motion.div
-          variants={item}
+          variants={item as any}
           className="flex items-center gap-2 text-sm text-gray-400 mb-4"
         >
           <svg
@@ -96,7 +97,7 @@ const Introduce = () => {
 
         {/* Socials */}
         <motion.div
-          variants={item}
+          variants={item as any}
           className="flex w-full items-center gap-4 justify-start"
         >
           <Link href="https://github.com/AmirSarani" target="_blank">
@@ -124,13 +125,13 @@ const Introduce = () => {
       <div className="flex-1 text-center lg:text-left">
         {/* CTA */}
         <motion.div
-          variants={item}
+          variants={item as any}
           className="flex justify-center lg:justify-start items-center gap-4 mb-6"
         ></motion.div>
 
         {/* Name */}
         <motion.h1
-          variants={item}
+          variants={item as any}
           className="text-4xl lg:text-6xl font-bold mb-3 tracking-tight"
         >
           Amir Sarani
@@ -140,12 +141,15 @@ const Introduce = () => {
           console.log(text, "text");
           return ( */}
         <div>
-          <motion.p variants={item} className="text-xl text-gray-400 mb-5">
+          <motion.p
+            variants={item as any}
+            className="text-xl text-gray-400 mb-5"
+          >
             {data?.[0]?.title}
           </motion.p>
 
           <motion.p
-            variants={item}
+            variants={item as any}
             className="text-gray-300 leading-relaxed text-lg max-w-2xl"
           >
             {data?.[0]?.body}

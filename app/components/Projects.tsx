@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import instance from "@/Api/axios";
 import { useQuery } from "@tanstack/react-query";
@@ -41,7 +42,7 @@ type TPprojects = {
   desc: string;
   live: string;
   github: string;
-  tech: string;
+  tech: string[];
 };
 
 const Projects = () => {
@@ -74,7 +75,7 @@ const Projects = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: [0.42, 0, 0.58, 1],
       },
     },
   };
@@ -91,7 +92,7 @@ const Projects = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: [0.42, 0, 0.58, 1],
       },
     },
   };
@@ -104,7 +105,7 @@ const Projects = () => {
       scaleX: 1,
       transition: {
         duration: 0.8,
-        ease: "easeInOut",
+        ease: [0.42, 0, 0.58, 1],
       },
     },
   };
@@ -113,7 +114,7 @@ const Projects = () => {
     <section className="mb-16">
       {/* Title */}
       <motion.div
-        variants={headerContainer}
+        variants={headerContainer as any}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.4 }}
@@ -121,11 +122,11 @@ const Projects = () => {
         className="mb-12"
       >
         <motion.div
-          variants={headerItem}
+          variants={headerItem as any}
           className="flex items-center gap-4 mb-4"
         >
           <motion.div
-            variants={iconVariant}
+            variants={iconVariant as any}
             style={{ transform: "none" }}
             className="p-3 rounded-xl border border-blue-500/30 bg-gradient-to-br from-blue-500/20 to-cyan-500/20"
           >
@@ -146,14 +147,14 @@ const Projects = () => {
             </svg>
           </motion.div>
           <motion.h2
-            variants={headerItem}
+            variants={headerItem as any}
             className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent"
           >
             Featured Projects
           </motion.h2>
         </motion.div>
         <motion.div
-          variants={lineVariant}
+          variants={lineVariant as any}
           className="h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"
         />
       </motion.div>
@@ -192,8 +193,8 @@ const Projects = () => {
                   {p.title}
                   <div className="flex gap-3 mb-3">
                     <div className="flex flex-wrap gap-3 mt-3">
-                      {p.tech?.map((t, index) => {
-                        const skill = skillsMap[t];
+                      {p.tech?.map((t: any, index) => {
+                        const skill = (skillsMap as any)[t];
                         if (!skill) return null;
 
                         const Icon = skill.icon;

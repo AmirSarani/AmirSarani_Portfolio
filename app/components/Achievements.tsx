@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import instance from "@/Api/axios";
 import { useQuery } from "@tanstack/react-query";
@@ -38,7 +39,7 @@ const Achievements = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: [0.42, 0, 0.58, 1],
       },
     },
   };
@@ -55,7 +56,7 @@ const Achievements = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: [0.42, 0, 0.58, 1],
       },
     },
   };
@@ -68,7 +69,7 @@ const Achievements = () => {
       scaleX: 1,
       transition: {
         duration: 0.8,
-        ease: "easeInOut",
+        ease: [0.42, 0, 0.58, 1],
       },
     },
   };
@@ -77,7 +78,7 @@ const Achievements = () => {
     <div className="mb-16">
       {/* Header */}
       <motion.div
-        variants={headerContainer}
+        variants={headerContainer as any}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.4 }}
@@ -85,11 +86,11 @@ const Achievements = () => {
         className="mb-12"
       >
         <motion.div
-          variants={headerItem}
+          variants={headerItem as any}
           className="flex items-center gap-4 mb-4"
         >
           <motion.div
-            variants={iconVariant}
+            variants={iconVariant as any}
             style={{ transform: "none" }}
             className="p-3 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl border border-blue-500/30"
           >
@@ -103,7 +104,7 @@ const Achievements = () => {
           </motion.div>
 
           <motion.h2
-            variants={headerItem}
+            variants={headerItem as any}
             className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent"
           >
             Achievements & Badges
@@ -111,7 +112,7 @@ const Achievements = () => {
         </motion.div>
 
         <motion.div
-          variants={lineVariant}
+          variants={lineVariant as any}
           className="h-px w-full bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"
         />
       </motion.div>

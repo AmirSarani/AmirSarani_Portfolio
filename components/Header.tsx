@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import logo from "@/public/logo.webp";
+import logo from "@/public/logo.png";
 import Image from "next/image";
 import Clock from "@/app/components/Clock";
 import { motion } from "motion/react";

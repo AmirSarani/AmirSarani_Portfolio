@@ -7,7 +7,7 @@ const GitHubContributions = () => {
     <motion.section
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      transition={{ duration: 0.5, ease: [0.42, 0, 0.58, 1] }}
       viewport={{ once: true, amount: 0.3 }}
       className="w-full flex justify-center items-center flex-col pb-16"
     >
@@ -47,7 +47,7 @@ const GitHubContributions = () => {
 
       {/* Grid */}
       <div className="w-[75%]  overflow-x-auto rounded-xl border border-blue-500/30  p-4 shadow-md">
-        <div className="bg-[#000000] p-3">
+        <div className="bg-[#000000] p-3" dir="rtl">
           <GitHubCalendar username="amirsarani" />
         </div>
       </div>

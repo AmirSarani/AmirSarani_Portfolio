@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { Briefcase } from "lucide-react";
@@ -25,7 +26,7 @@ type TPjourney = {
     jobPlace: string;
     jobDate: string;
     jobBodyText: string;
-    jobKeywords: string;
+    jobKeywords: string[];
   };
 };
 
@@ -43,7 +44,7 @@ const Journey = () => {
       opacity: 0,
       x: -20,
     },
-    visible: (i) => ({
+    visible: (i: any) => ({
       opacity: 1,
       x: 0,
       transition: {
@@ -90,7 +91,7 @@ const Journey = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: [0.42, 0, 0.58, 1],
       },
     },
   };
@@ -103,14 +104,14 @@ const Journey = () => {
       scaleX: 1,
       transition: {
         duration: 0.8,
-        ease: "easeInOut",
+        ease: [0.42, 0, 0.58, 1],
       },
     },
   };
 
   return (
     <motion.div
-      variants={list}
+      variants={list as any}
       initial="hidden"
       animate="visible"
       className="mb-16"
@@ -119,17 +120,17 @@ const Journey = () => {
 
       <motion.div
         className="mb-12"
-        variants={headerContainer}
+        variants={headerContainer as any}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.4 }}
       >
         <motion.div
           className="flex items-center gap-4 mb-4"
-          variants={headerItem}
+          variants={headerItem as any}
         >
           <motion.div
-            variants={iconVariant}
+            variants={iconVariant as any}
             className="p-3 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl border border-blue-500/30"
           >
             <Briefcase className="w-6 h-6 text-blue-400" />
@@ -137,14 +138,14 @@ const Journey = () => {
 
           <motion.h2
             className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-blue-300 bg-clip-text text-transparent"
-            variants={headerItem}
+            variants={headerItem as any}
           >
             Professional Journey
           </motion.h2>
         </motion.div>
 
         <motion.div
-          variants={lineVariant}
+          variants={lineVariant as any}
           style={{ originX: 0 }}
           className="h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent w-full"
         />
@@ -179,7 +180,7 @@ const Journey = () => {
             {data?.[0]?.roleOne.jobKeywords.map((text, index) => (
               <motion.li
                 key={index}
-                variants={textVariants}
+                variants={textVariants as any}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
