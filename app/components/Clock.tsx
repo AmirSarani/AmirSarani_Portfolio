@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from "react";
 
-const Clock = () => {
+type ClockProps = {
+  className?: string;
+};
+
+const Clock = ({ className = "" }: ClockProps) => {
   const [time, setTime] = useState("");
 
   useEffect(() => {
@@ -24,7 +28,7 @@ const Clock = () => {
     return () => clearInterval(interval);
   }, []);
 
-  return <span>{time}</span>;
+  return <span className={className}>{time}</span>;
 };
 
 export default Clock;

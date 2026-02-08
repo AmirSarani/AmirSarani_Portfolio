@@ -34,7 +34,7 @@ const skills = [
   { name: "Next.js", icon: SiNextdotjs, color: "text-white" },
   { name: "PWA", icon: SiPwa, color: "text-black-200" },
   { name: "Git", icon: SiGit, color: "text-orange-500" },
-  { name: "Vercel", icon: SiGithub, color: "text-white" },
+  { name: "GitHub", icon: SiGithub, color: "text-white" },
 ];
 
 const Tech = () => {

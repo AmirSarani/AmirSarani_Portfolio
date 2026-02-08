@@ -52,7 +52,7 @@ const LetsBuild = () => {
           </motion.div>
 
           {/* Title */}
-          <h2 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent">
+          <h2 className="text-2xl lg:text-4xl font-bold bg-gradient-to-r from-white via-blue-100 to-cyan-300 bg-clip-text text-transparent">
             Let&apos;s Build Something Amazing
           </h2>
         </div>
@@ -75,9 +75,9 @@ const LetsBuild = () => {
       </motion.p>
 
       {/* Contact Buttons */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto w-full">
+      <div className="flex justify-center items-center flex-col md:flex-row gap-4 max-w-xl  mx-auto w-full">
         {/* Email Button */}
-        <div className="w-full">
+        <div className="w-[90%] md:w-full ">
           <a
             href="mailto:adityadomle14@gmail.com"
             target="_blank"
@@ -102,7 +102,7 @@ const LetsBuild = () => {
         </div>
 
         {/* Topmate Button */}
-        <div className="w-full">
+        <div className="w-[90%] md:w-full">
           <a
             href="/AmirSaraniResumee.pdf"
             target="_blank"

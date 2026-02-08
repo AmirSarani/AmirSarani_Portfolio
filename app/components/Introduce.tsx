@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-import { FaGithub, FaLinkedin, FaInstagram, FaXTwitter } from "react-icons/fa6";
+import { FaGithub, FaLinkedin, FaTelegram } from "react-icons/fa6";
 
 import { useQuery } from "@tanstack/react-query";
 import instance from "@/Api/axios";
@@ -54,7 +54,7 @@ const Introduce = () => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.25 }}
-      className="flex flex-col lg:flex-row items-center lg:items-start gap-8 mb-16"
+      className="flex flex-col lg:flex-row items-center lg:items-start gap-8 mb-16 mt-6"
     >
       {/* LEFT */}
       <div className="flex flex-col items-center lg:items-start">
@@ -65,7 +65,7 @@ const Introduce = () => {
         >
           <Image
             src={prof}
-            alt="Amir Sarani"
+            alt="AmirHossain Sarani"
             fill
             className="object-cover"
             priority
@@ -98,7 +98,7 @@ const Introduce = () => {
         {/* Socials */}
         <motion.div
           variants={item as any}
-          className="flex w-full items-center gap-4 justify-start"
+          className="flex w-full items-center gap-4 justify-center md:justify-start"
         >
           <Link href="https://github.com/AmirSarani" target="_blank">
             <FaGithub className="w-8 h-8 text-gray-200 hover:text-gray-500 transition" />
@@ -110,10 +110,11 @@ const Introduce = () => {
           >
             <FaLinkedin className="w-8 h-8 text-blue-500 hover:text-blue-700 transition" />
           </Link>
-          {/* 
-          <Link href="https://x.com/env_aditya" target="_blank">
-            <FaXTwitter className="w-8 h-8 text-gray-200 hover:text-gray-500 transition" />
+          <Link href="https://t.me/Oshidaxo" target="_blank">
+            <FaTelegram className="w-8 h-8 text-gray-200 hover:text-gray-500 transition" />
           </Link>
+
+          {/* 
 
           <Link href="https://www.instagram.com/adittya.tsx" target="_blank">
             <FaInstagram className="w-8 h-8 text-pink-500 hover:text-pink-700 transition" />
