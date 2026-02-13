@@ -79,7 +79,7 @@ const LetsBuild = () => {
         {/* Email Button */}
         <div className="w-[90%] md:w-full ">
           <a
-            href="mailto:adityadomle14@gmail.com"
+            href="mailto:amirsarani996@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full flex items-center justify-center gap-2 border border-blue-700/50 text-blue-300 hover:bg-blue-900/30 transition-all duration-300 py-2 px-4 rounded-sm text-sm text-center"

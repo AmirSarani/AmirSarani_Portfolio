@@ -10,7 +10,7 @@ export const GET = async () => {
     },
     {
       title: "Flowrise Next",
-      image: "/GreenCardProject.png",
+      image: "/flowrise.png",
       desc: "A modern web application with clean UI, well-structured routing, and fully responsive design across all devices.",
       live: "https://flowrise-next-sarani.netlify.app/",
       github: "https://github.com/AmirSarani/flowrise-next",
