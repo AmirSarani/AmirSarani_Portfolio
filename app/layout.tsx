@@ -45,6 +45,26 @@ export default function RootLayout({
         {/* <link rel="shortcut icon" href="/icon.webp" type="image/x-icon" /> */}
       </head>
       <body className={`${poppins.variable} ${outfit.variable} antialiased`}>
+        <head>
+          <link
+            rel="icon"
+            type="image/png"
+            href="%PUBLIC_URL%/favicon-96x96.png"
+            sizes="96x96"
+          />
+          <link
+            rel="icon"
+            type="image/svg+xml"
+            href="%PUBLIC_URL%/favicon.svg"
+          />
+          <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="%PUBLIC_URL%/apple-touch-icon.png"
+          />
+          <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
+        </head>
         <Header />
         <QueryClientProvider client={queryClient}>
           {children}
